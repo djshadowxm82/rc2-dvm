@@ -12,8 +12,8 @@ services:
     environment:
       LD_LIBRARY_PATH: /native:/app
     volumes:
-      - ./config.yml:/config/config.yml:ro
-      - ./libvocoder.so:/native/libvocoder.so:ro
-      - ./logs:/logs
+      - /opt/rc2-dvm/config/config.yml:/config/config.yml:ro
+      - /opt/rc2-dvm/native/libvocoder.so:/native/libvocoder.so:ro
+      - /opt/rc2-dvm/logs:/logs
     devices:
       - /dev/bus/usb:/dev/bus/usb
