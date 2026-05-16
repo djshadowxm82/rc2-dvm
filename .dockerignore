@@ -1,0 +1,8 @@
+.git
+.github
+.vs
+.vscode
+**/bin
+**/obj
+**/*.log
+rc2-dvm/rc2-web-gateway/node_modules

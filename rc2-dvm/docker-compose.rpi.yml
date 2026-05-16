@@ -1,0 +1,19 @@
+services:
+  rc2-dvm:
+    build:
+      context: ..
+      dockerfile: rc2-dvm/Dockerfile.rpi
+      args:
+        TARGETRID: linux-arm64
+    image: rc2-dvm:rpi
+    container_name: rc2-dvm
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      LD_LIBRARY_PATH: /native:/app
+    volumes:
+      - ./config.yml:/config/config.yml:ro
+      - ./libvocoder.so:/native/libvocoder.so:ro
+      - ./logs:/logs
+    devices:
+      - /dev/bus/usb:/dev/bus/usb

@@ -12,21 +12,18 @@
     <Description>RadioConsole2 DVM FNE Interface Daemon</Description>
     <Copyright>Copyright (c) 2025 Patrick McDonnell W3AXL</Copyright>
     <Product>RadioConsole2 DVM FNE Interface Daemon</Product>
-    <Platforms>x86;AnyCPU</Platforms>
-    <PlatformTarget>x86</PlatformTarget>
+    <Platforms>AnyCPU</Platforms>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
 	<DefineConstants>$(ExtraConstants)</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DefineConstants>TRACE;WIN32;$(ExtraConstants)</DefineConstants>
-	<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+    <DefineConstants>TRACE;$(ExtraConstants)</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DefineConstants>WIN32;$(ExtraConstants)</DefineConstants>
-	<RuntimeIdentifier>win-x86</RuntimeIdentifier>
+    <DefineConstants>$(ExtraConstants)</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,7 +32,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="NAudio" Version="2.2.1" />
-    <PackageReference Include="NAudio.WinMM" Version="2.2.1" />
+    <PackageReference Include="NAudio.WinMM" Version="2.2.1" Condition="'$(RuntimeIdentifier)' == 'win-x86' OR '$(RuntimeIdentifier)' == 'win-x64' OR '$(RuntimeIdentifier)' == 'win-arm64'" />
     <PackageReference Include="NWaves" Version="0.9.6" />
     <PackageReference Include="Serilog" Version="4.2.0" />
     <PackageReference Include="Serilog.Exceptions" Version="8.4.0" />
